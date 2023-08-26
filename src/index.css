@@ -1,0 +1,222 @@
+@import "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+body {
+  font-family: sans-serif;
+}
+
+.mainContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  background-color: rgba(255, 255, 255, 0.5);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  height: 80%;
+  border-radius: 20px;
+  padding: 4rem;
+}
+
+.mainBackground {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+  transition: all 0.2s;
+}
+
+.dayInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  overflow-y: scroll;
+}
+
+.city {
+  font-size: 2.4rem;
+  letter-spacing: 0.4rem;
+  grid-column: 1/-1;
+}
+
+.cityInfo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: left;
+  gap: 0.8rem;
+  width: 90%;
+  font-size: 1.4rem;
+}
+
+.temperature {
+  font-size: 2.4rem;
+  grid-column: 1/-1;
+}
+
+.degree {
+  font-size: 2rem;
+}
+
+.curTemp {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  font-size: 1.8rem;
+}
+
+.curTemp img {
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+.icon {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+
+.weatherContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  width: 90%;
+}
+
+.weatherInfo {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.mapContainer {
+  flex: 1;
+  height: 100%;
+  background-color: var(--color-dark--2);
+  position: relative;
+}
+
+.map {
+  height: 100%;
+}
+
+.positionBtn {
+  border: none;
+  border-radius: 9px;
+  padding: 1rem;
+  font-size: 1.2rem;
+  align-self: center;
+  cursor: pointer;
+  background-color: #002366;
+  color: #fff;
+}
+
+.positionBtn:hover,
+.positionBtn:active {
+  background-color: #00004d;
+}
+
+/* //
+
+
+
+/
+/
+/
+
+/ */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #e3e3e3;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 2rem;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 2rem;
+}
+
+.degree:before {
+  background-image: url("../public/imgs/pngegg-2.png");
+  background-size: 80%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+input:checked + .mode {
+  background-color: #333;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px orange;
+}
+
+input:checked + .degree:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+  background-image: url("../public/imgs/pngegg.png");
+  background-size: 80%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.switchButton {
+  display: flex;
+  /* flex-direction: column; */
+  gap: 0.5rem;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+@media (max-width: 56em) {
+  .mainContainer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .map {
+    height: 10rem;
+  }
+}
